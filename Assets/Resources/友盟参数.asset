@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1543d9ec61e4044988f2257f5dd4286, type: 3}
+  m_Name: "\u53CB\u76DF\u53C2\u6570"
+  m_EditorClassIdentifier: 
+  android:
+    appid: 608c05aac9aacd3bd4c07e7a
+    channal: 222
+    debug: 1
+    useRemoteCtrl: 1
+  ios:
+    appid: 
+    channal: 
+    debug: 0
+    useRemoteCtrl: 0

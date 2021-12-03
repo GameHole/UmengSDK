@@ -1,0 +1,45 @@
+package com.androidapi.umengmaker;
+
+import android.app.Application;
+import android.util.Log;
+
+import com.api.unityactivityinterface.IOnAppCreate;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.cconfig.RemoteConfigSettings;
+import com.umeng.cconfig.UMRemoteConfig;
+import com.umeng.cconfig.listener.OnConfigStatusChangedListener;
+import com.umeng.commonsdk.UMConfigure;
+
+public class UmengProInitor implements IOnAppCreate {
+    @Override
+    public void onCreate(Application activity) {
+        Boolean isDebug = ##DEBUG##;
+        Boolean useRemoteCtrl = ##USE_REMOTE_CTRL##;
+        UMConfigure.setLogEnabled(isDebug);
+        if (useRemoteCtrl)
+        {
+            final UMRemoteConfig umRemoteConfig = UMRemoteConfig.getInstance();
+            RemoteConfigSettings info = new RemoteConfigSettings.Builder().setAutoUpdateModeEnabled(!isDebug).build();
+            umRemoteConfig.setConfigSettings(info);
+            if(isDebug){
+                umRemoteConfig.setOnNewConfigfecthed(new OnConfigStatusChangedListener() {
+                    @Override
+                    public void onFetchComplete() {
+                        umRemoteConfig.activeFetchConfig();
+                        Log.i("UMRemoteConfig", "onActiveComplete" );
+                    }
+
+                    @Override
+                    public void onActiveComplete() {
+                        Log.i("UMRemoteConfig", "onActiveComplete" );
+                    }
+                });
+            }
+        }
+        UMConfigure.init(activity, "##APPID##", "##APPCHANNAL##", UMConfigure.DEVICE_TYPE_PHONE, null);
+
+        UMConfigure.setProcessEvent(true);
+        MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
+
+    }
+}

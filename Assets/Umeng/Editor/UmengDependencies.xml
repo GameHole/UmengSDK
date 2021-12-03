@@ -1,0 +1,37 @@
+<dependencies>
+  <androidPackages>
+    <repositories>
+      <repository>https://repo1.maven.org/maven2/</repository>
+    </repositories>
+    <androidPackage spec="com.umeng.umsdk:common:9.4.4"/>
+    <androidPackage spec="com.umeng.umsdk:asms:1.4.1"/>
+    <androidPackage spec="com.umeng.umsdk:abtest:1.0.0"/>
+    <androidPackage spec="com.umeng.umsdk:apm:1.5.2"/>
+  </androidPackages>
+
+  <iosPods>
+    <!--<sources>
+      <source>https://cocoapods.mycompany.com/Specs</source>
+    </sources>-->
+    <iosPod name="UMCommon" addToAllTargets="false">
+      <sources>
+        <source>https://github.com/CocoaPods/Specs</source>
+      </sources>
+    </iosPod>
+    <iosPod name="UMDevice" addToAllTargets="false">
+      <sources>
+        <source>https://github.com/CocoaPods/Specs</source>
+      </sources>
+    </iosPod>
+    <iosPod name="UMAnalyticsGame" addToAllTargets="false">
+      <sources>
+        <source>https://github.com/CocoaPods/Specs</source>
+      </sources>
+    </iosPod>
+    <iosPod name="UMAPM" addToAllTargets="false">
+      <sources>
+        <source>https://github.com/CocoaPods/Specs</source>
+      </sources>
+    </iosPod>
+  </iosPods>
+</dependencies>
