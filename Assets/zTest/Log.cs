@@ -13,7 +13,12 @@ public class Log : MonoBehaviour
         menual.Init();
         analyze.SetEvent("test");
         analyze.SetEvent("test1", new Dictionary<string, string> { { "a", "b" } });
-        Debug.Log($"remote cfd::{remote.GetConfig("test")}");
+        StartCoroutine(wait());
+       
     }
-
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(1);
+        Debug.Log($"remote cfd::{remote.GetConfig("func_enabled_v_1_3_9")}");
+    }
 }
