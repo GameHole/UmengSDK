@@ -46,9 +46,13 @@ namespace Umeng
                 data.CreateAttribute("scheme", $"um.{um.android.appid}");
                 intnt.AppendChild(data);
                 act.AppendChild(intnt);
-                doc.Save();
             }
-            
+            else
+            {
+                var data = doc.SelectSingleNode("/manifest/application/activity/intent-filter/data");
+                data.Attributes["android:scheme"].Value = $"um.{um.android.appid}";
+            }
+            doc.Save();
         }
         static void RemoveXml()
         {

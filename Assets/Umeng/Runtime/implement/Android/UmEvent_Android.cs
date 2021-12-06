@@ -4,23 +4,27 @@ using MiniGameSDK;
 namespace Umeng
 {
 #if UNITY_ANDROID
-    public class UmEvent_Android : IAnalyzeEvent,IInitializable
+    public class UmEvent_Android : IAnalyzeEvent,IInitializable, IMenualInitor
     {
-        AndroidJavaClass umCfg;
         AndroidJavaClass agent;
+        public void Init()
+        {
+            var set = AScriptableObject.Get<UmParameter>();
+            if (!set.android.isLateInit) return;
+            Debug.Log($"umeng init appid = {set.android.appid}");
+            AndroidJavaClass umCfg = new AndroidJavaClass("com.umeng.commonsdk.UMConfigure");
+            AndroidJavaClass mode = new AndroidJavaClass("com.umeng.analytics.MobclickAgent$PageMode");
+            umCfg.CallStatic("init", ActivityGeter.GetApplication(), set.android.appid, set.android.channal, umCfg.GetStatic<int>("DEVICE_TYPE_PHONE"), null);
+            umCfg.CallStatic("setProcessEvent", true);
+            agent.CallStatic("setPageCollectionMode", mode.GetStatic<AndroidJavaObject>("AUTO"));
+            mode.Dispose();
+            umCfg.Dispose();
+        }
         public void Initialize()
         {
-            //var set = AScriptableObject.Get<UmParameter>();
-            //Debug.Log($"umeng start init appid = {set.android.appid}");
-            //umCfg = new AndroidJavaClass("com.umeng.commonsdk.UMConfigure");
             agent = new AndroidJavaClass("com.umeng.analytics.MobclickAgent");
-            //AndroidJavaClass mode = new AndroidJavaClass("com.umeng.analytics.MobclickAgent$PageMode");
-            //umCfg.CallStatic("setLogEnabled", set.android.debug);
-            //umCfg.CallStatic("init",ActivityGeter.GetApplication(), set.android.appid, set.android.channal, umCfg.GetStatic<int>("DEVICE_TYPE_PHONE"), null);
-            //umCfg.CallStatic("setProcessEvent", true);
-            //agent.CallStatic("setPageCollectionMode", mode.GetStatic<AndroidJavaObject>("AUTO"));
-            //mode.Dispose();
         }
+
 
         public void SetEvent(string key)
         {

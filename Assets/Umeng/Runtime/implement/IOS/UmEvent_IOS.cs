@@ -12,7 +12,7 @@ namespace Umeng
         [DllImport("__Internal")]
         static extern void _Event(string key);
         [DllImport("__Internal")]
-        static extern void _Event(string key,string mapKeyStr);
+        static extern void _EventWithValues(string key,string mapKeyStr);
         StringBuilder builder = new StringBuilder();
         public void SetEvent(string key)
         {
@@ -29,7 +29,7 @@ namespace Umeng
                 builder.Append(item.Value);
                 builder.Append(';');
             }
-            _Event(key, builder.ToString());
+            _EventWithValues(key, builder.ToString());
         }
     }
 }

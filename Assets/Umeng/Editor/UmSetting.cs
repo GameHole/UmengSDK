@@ -12,7 +12,7 @@ namespace Umeng
         //[MenuItem("友盟/设置参数")]
         static void Set()
         {
-            UmParameterEditor.SetDebugXml(AssetHelper.CreateAsset<UmParameter>());
+            UmParameterEditor.SetDebugXml(AssetHelper.CreateOrGetAsset<UmParameter>());
             var dc = XmlHelper.GetAndroidManifest();
             dc.SetPermission("android.permission.ACCESS_NETWORK_STATE");
             dc.SetPermission("android.permission.INTERNET");

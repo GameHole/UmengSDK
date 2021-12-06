@@ -13,25 +13,12 @@
     <!--<sources>
       <source>https://cocoapods.mycompany.com/Specs</source>
     </sources>-->
-    <iosPod name="UMCommon" addToAllTargets="false">
-      <sources>
-        <source>https://github.com/CocoaPods/Specs</source>
-      </sources>
-    </iosPod>
-    <iosPod name="UMDevice" addToAllTargets="false">
-      <sources>
-        <source>https://github.com/CocoaPods/Specs</source>
-      </sources>
-    </iosPod>
-    <iosPod name="UMAnalyticsGame" addToAllTargets="false">
-      <sources>
-        <source>https://github.com/CocoaPods/Specs</source>
-      </sources>
-    </iosPod>
-    <iosPod name="UMAPM" addToAllTargets="false">
-      <sources>
-        <source>https://github.com/CocoaPods/Specs</source>
-      </sources>
-    </iosPod>
+    <iosPod name="UMCommon" addToAllTargets="false"/>
+    <iosPod name="UMDevice" addToAllTargets="false"/>
+    <iosPod name="UMAPM" addToAllTargets="false"/>
+    <iosPod name="UMCCommonLog" addToAllTargets="false"/>
+    <iosPod name="UMABTest" addToAllTargets="false"/>
+    <iosPod name="UMCSecurityPlugins" addToAllTargets="false"/>
+    
   </iosPods>
 </dependencies>
