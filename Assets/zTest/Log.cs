@@ -10,7 +10,7 @@ public class Log : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        menual.Init();
+        menual?.Init();
         analyze.SetEvent("test");
         analyze.SetEvent("test1", new Dictionary<string, string> { { "a", "b" } });
         StartCoroutine(wait());

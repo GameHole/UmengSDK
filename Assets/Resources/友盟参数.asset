@@ -19,8 +19,8 @@ MonoBehaviour:
     useRemoteCtrl: 1
     isLateInit: 1
   ios:
-    appid: 608c05aac9aacd3bd4c07e7a
+    appid: 61af26d7e014255fcba3de3e
     channal: App Store
     debug: 1
-    useRemoteCtrl: 0
+    useRemoteCtrl: 1
     isLateInit: 0

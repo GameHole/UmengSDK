@@ -9,16 +9,19 @@ namespace Umeng
         AndroidJavaClass agent;
         public void Init()
         {
-            var set = AScriptableObject.Get<UmParameter>();
-            if (!set.android.isLateInit) return;
-            Debug.Log($"umeng init appid = {set.android.appid}");
-            AndroidJavaClass umCfg = new AndroidJavaClass("com.umeng.commonsdk.UMConfigure");
-            AndroidJavaClass mode = new AndroidJavaClass("com.umeng.analytics.MobclickAgent$PageMode");
-            umCfg.CallStatic("init", ActivityGeter.GetApplication(), set.android.appid, set.android.channal, umCfg.GetStatic<int>("DEVICE_TYPE_PHONE"), null);
-            umCfg.CallStatic("setProcessEvent", true);
-            agent.CallStatic("setPageCollectionMode", mode.GetStatic<AndroidJavaObject>("AUTO"));
-            mode.Dispose();
-            umCfg.Dispose();
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                var set = AScriptableObject.Get<UmParameter>();
+                if (!set.android.isLateInit) return;
+                Debug.Log($"umeng init appid = {set.android.appid}");
+                AndroidJavaClass umCfg = new AndroidJavaClass("com.umeng.commonsdk.UMConfigure");
+                AndroidJavaClass mode = new AndroidJavaClass("com.umeng.analytics.MobclickAgent$PageMode");
+                umCfg.CallStatic("init", ActivityGeter.GetApplication(), set.android.appid, set.android.channal, umCfg.GetStatic<int>("DEVICE_TYPE_PHONE"), null);
+                umCfg.CallStatic("setProcessEvent", true);
+                agent.CallStatic("setPageCollectionMode", mode.GetStatic<AndroidJavaObject>("AUTO"));
+                mode.Dispose();
+                umCfg.Dispose();
+            }
         }
         public void Initialize()
         {

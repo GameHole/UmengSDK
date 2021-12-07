@@ -18,7 +18,7 @@
     <iosPod name="UMAPM" addToAllTargets="false"/>
     <iosPod name="UMCCommonLog" addToAllTargets="false"/>
     <iosPod name="UMABTest" addToAllTargets="false"/>
-    <iosPod name="UMCSecurityPlugins" addToAllTargets="false"/>
+    <!--<iosPod name="UMCSecurityPlugins" addToAllTargets="false"/>-->
     
   </iosPods>
 </dependencies>
