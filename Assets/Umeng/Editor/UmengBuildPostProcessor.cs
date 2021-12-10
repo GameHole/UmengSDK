@@ -10,7 +10,7 @@
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 // OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-
+using MiniGameSDK;
 using System.IO;
 using UnityEngine;
 using UnityEditor;
@@ -29,14 +29,14 @@ namespace Umeng
                 string projectPath = PBXProject.GetPBXProjectPath(path);
                 PBXProject project = new PBXProject();
                 project.ReadFromString(File.ReadAllText(projectPath));
-#if UNITY_2019_3_OR_NEWER
-            string targetName = project.GetUnityMainTargetGuid();
-#else
-                string targetName = PBXProject.GetUnityTargetName();
-#endif
-                string targetGUID = project.TargetGuidByName(targetName);
+//#if UNITY_2019_3_OR_NEWER
+//                string targetGUID = project.GetUnityFrameworkTargetGuid();
+//#else
+//                string targetName = PBXProject.GetUnityTargetName();
+//                string targetGUID = project.TargetGuidByName(targetName);
+//#endif
 
-                AddFrameworks(project, targetGUID);
+                AddFrameworks(project, project.GetPBXTargetGuid());
 
                 // Write.
                 File.WriteAllText(projectPath, project.WriteToString());

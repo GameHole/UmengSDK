@@ -1,10 +1,14 @@
 {
   "name": "com.advertisingsdk.umengsdk",
   "displayName": "Umeng SDK",
-  "description": "",
-  "version": "1.0.0",
+  "description": "”—√Àsdk",
+  "version": "1.0.1",
   "unity": "2018.3",
   "license": "MIT",
   "dependencies": {
+    "com.advertisingsdk.basic": "1.0.0",
+    "com.enred.androidhelper": "1.0.0",
+    "com.google.dependencymanager": "1.0.0",
+    "com.refinter.basic": "1.0.0"
   }
 }

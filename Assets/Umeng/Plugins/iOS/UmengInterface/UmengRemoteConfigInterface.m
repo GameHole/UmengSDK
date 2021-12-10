@@ -5,6 +5,8 @@
     NSString *keyStr = [NSString stringWithCString:key encoding:NSUTF8StringEncoding];
     //NSLog(@"%@",keyStr);
     NSString *valueStr= (NSString *)[UMRemoteConfig configValueForKey:keyStr];
+    if(valueStr==nil)
+        return nil;
     //NSLog(@"str %@",valueStr);
     const char* navStr= [valueStr UTF8String];
     char* res=(char*)malloc(strlen(navStr)+1);
